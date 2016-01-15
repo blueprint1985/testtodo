@@ -34,6 +34,8 @@
 			<div class="col-md-12" ng-controller="NoteController as notes">
 				<h4>Update:</h4>
 				<form ng-submit="notes.updNote(notes.noteupd)">
+					<!-- just to debug, remove the next line afterwards -->
+					{{notes.noteupd}} 
 					<div class="form-group">
 						<label for="updContent">Note:</label>
 						<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="notes.noteupd.content"></textarea>
