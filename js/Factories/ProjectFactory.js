@@ -8,9 +8,9 @@ function factory($http) {
     return service;
     
     function getProjects() {
-        return $http({method : 'GET',url : 'http://localhost:8000/projects'})
-        .then(function(response) {
-            return response.data;
+        return $http({
+            method : 'GET',
+            url : 'http://localhost:8000/projects'
         });
     }
 }

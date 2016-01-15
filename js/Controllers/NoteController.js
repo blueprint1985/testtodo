@@ -26,9 +26,13 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     }
 
     function delNote(note) {
-        NoteFactory.delNote(note).then(getNotes, function() {
-            alert("Error deleting note");
-        });
+        var r = confirm("Are you sure?");
+
+        if (r == true) {
+            NoteFactory.delNote(note).then(getNotes, function() {
+                alert("Error deleting note");
+            });
+        }
     }
 
     // Show overlay with form for updating a note
@@ -39,6 +43,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         overlaycover.style.opacity = .65;
 
         if(overlaycover.style.display == "block"){ // For toggling overlay
+            getNotes;
             overlaycover.style.display = "none"; // Hide div overlaycover
             overlaybox.style.display = "none"; // Hide div overlaybox
         } else {

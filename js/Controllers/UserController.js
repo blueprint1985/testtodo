@@ -1,4 +1,4 @@
-angular.module('todoApp').controller('UserController', function($scope, Users) {
+angular.module('todoApp').controller('UserController', function($scope, UserFactory) {
     var thisApp = this;
     
     // controller init sort of say
@@ -9,7 +9,9 @@ angular.module('todoApp').controller('UserController', function($scope, Users) {
     
     function getUsers() {
         UserFactory.getUsers().then(function(response){ 
-            thisApp.users = response.data; 
+            thisApp.users = response.data;
+            console.log(response.data);
+            console.log(thisApp.users);
         }, function() { 
             alert("Error getting users"); 
         });
