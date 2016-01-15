@@ -2,12 +2,12 @@ angular.module('todoApp').factory('UserFactory', factory);
 
 function factory($http) {
     var service = {
-        get: get
+        getUsers: getUsers
     };
 
     return service;
     
-    function get() {
+    function getUsers() {
         return $http({method : 'GET',url : 'http://localhost:8000/users'})
         .then(function(response) {
             return response.data;

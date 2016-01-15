@@ -1,12 +1,7 @@
-angular.module('todoApp')
-    .controller('ProjectController', function($scope, ProjectFactory) {
-
-    //.....
-    var getProjects = ProjectFactory.get().then(function(data){
-        thisApp.users = response.data;
+angular.module('todoApp').controller('ProjectController', function($scope, ProjectFactory) {
+    var getProjects = ProjectFactory.getProjects().then(function(data){
+        thisApp.projects = response.data;
     }, function() {
-        alert("Error getting users");
+        alert("Error getting projects");
     });
-
-
-}
+});

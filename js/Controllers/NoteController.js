@@ -1,14 +1,11 @@
-angular.module('todoApp')
-    .controller('NoteController', function($scope, NoteFactory) {
-
-    //.....
+angular.module('todoApp').controller('NoteController', function($scope, NoteFactory) {
     var getNotes = NoteFactory.getNotes().then(function(data){
-        thisApp.users = response.data;
+        thisApp.notes = response.data;
     }, function() {
-        alert("Error getting users");
+        alert("Error getting notes");
     });
 
-    var addNote = NoteFactory.addNote($scope.noteadd).then(function(data){
+    /*var addNote = NoteFactory.addNote($scope.noteadd).then(function(data){
         thisApp.users = response.data;
     }, function() {
         alert("Error getting users");
@@ -72,5 +69,5 @@ angular.module('todoApp')
         } else {
             return "active"; // Note is not completed, still time left
         }
-    }
-}
+    }*/
+});

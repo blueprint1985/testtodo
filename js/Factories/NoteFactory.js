@@ -2,11 +2,11 @@ angular.module('todoApp').factory('NoteFactory', factory);
 
 function factory($http) {
     var service = {
-        get: get,
-        add: add,
-        del: del,
-        upd: upd,
-        show: show
+        getNotes: getNotes,
+        addNote: addNote,
+        delNote: delNote,
+        delNote: delNote,
+        showNote: showNote
     };
 
     return service;
