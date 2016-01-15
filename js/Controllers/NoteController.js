@@ -1,4 +1,4 @@
-angular.module('todoApp', [])
+angular.module('todoApp')
     .controller('NoteController', function($scope, NoteFactory) {
 
     //.....
