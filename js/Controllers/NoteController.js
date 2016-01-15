@@ -26,8 +26,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     }
 
     function delNote(note) {
-            var noteObj = JSON.parse('{"id":' + note + '}'); // JSON for req
-            NoteFactory.delNote(noteObj).then(getNotes, function() {
+            NoteFactory.delNote(note).then(getNotes, function() {
             alert("Error deleting note");
         });
     }
@@ -39,25 +38,11 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         var overlaybox = document.getElementById("overlaybox");
         overlaycover.style.opacity = .65;
 
-        if(overlaycover.style.display == "block" || note == 0){ // For toggling overlay
+        if(overlaycover.style.display == "block"){ // For toggling overlay
             overlaycover.style.display = "none"; // Hide div overlaycover
             overlaybox.style.display = "none"; // Hide div overlaybox
         } else {
-            var getUpd = NoteFactory.updNote(note).then(function(data){
-                thisApp.users = response.data;
-            }, function() {
-                alert("Error getting users");
-            });
-
-            noteupd.content = getUpd.content; // Update fields in form
-            noteupd.deadline = getUpd.deadline;
-            noteupd.id = getUpd.id;
-
-            if (response.data.completed == 1) {
-                noteupd.completed = true;
-            } else {
-                noteupd.completed = false;
-            }
+            thisApp.noteupd = note;
 
             overlaycover.style.display = "block"; // Show div overlaycover
             overlaybox.style.display = "block"; // Show div overlaybox
