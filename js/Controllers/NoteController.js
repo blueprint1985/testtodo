@@ -10,12 +10,14 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         getNotes();
     }
     activate();
-
-    var getNotes = NoteFactory.getNotes().then(function(data){
-        thisApp.notes = response.data;
-    }, function() {
-        alert("Error getting notes");
-    });
+    
+    function getNotes() {
+        NoteFactory.getNotes().then(function(data){ 
+            thisApp.notes = response.data; 
+        }, function() { 
+            alert("Error getting notes"); 
+        });
+    }
 
     var addNote = NoteFactory.addNote($scope.noteadd).then(getNotes, function() {
         alert("Error adding note");
