@@ -1,4 +1,4 @@
-angular.module('todoApp', [])
+angular.module('todoApp')
     .controller('ProjectController', function($scope, ProjectFactory) {
 
     //.....
