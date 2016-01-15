@@ -12,7 +12,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     activate();
     
     function getNotes() {
-        NoteFactory.getNotes().then(function(data){ 
+        NoteFactory.getNotes().then(function(response){ 
             thisApp.notes = response.data; 
         }, function() { 
             alert("Error getting notes"); 
