@@ -28,7 +28,7 @@
 		<script src="/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<!--<div id="overlaycover" ng-click="myControl.showUpd(0)"></div>
+		<div id="overlaycover" ng-click="myControl.showUpd(0)"></div>
 
 		<div id="overlaybox">
 			<div class="col-md-12" ng-controller="NoteController as notes">
@@ -54,10 +54,10 @@
 				</form>
 				Click utside the square to close.
 			</div>
-		</div>-->
+		</div>
 
-		<div class="container">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="listDiv" ng-controller="NoteController as notes">
+		<div class="container" ng-controller="NoteController as notes">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="listDiv">
 				<h1>Todo-list:</h1>
 				<p>
 					<img src="/images/legend-normal.png"> - Unfinished&emsp;
@@ -73,20 +73,20 @@
 						<th>Deadline:</th>
 						<th colspan="2">Modify:</th>
 					</tr>
-					<tr ng-repeat="note in notes.getNotes()" ng-class="rowClass(note.completed, note.deadline)">
+					<tr ng-repeat="note in notes.notes" ng-class="rowClass(note.completed, note.deadline)">
 						<td> {{ note.content }} </td>
 						<td> {{ note.user }} </td>
 						<td> {{ note.project }} </td>
 						<td> {{ note.created }} </td>
 						<td> {{ note.deadline }} </td>
 						<td><button type="button" class="btn btn-info" ng-click="myControl.showUpd(note.id)">Update</button></td>
-						<td><button type="button" class="btn btn-danger" ng-click="myControl.delTodo(note.id)">Delete</button></td>
+						<td><button type="button" class="btn btn-danger" ng-click="myControl.delNote(note.id)">Delete</button></td>
 					</tr>
 				</table>
 			</div>
-			<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formDiv">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formDiv">
 				<h3>Add new note:</h3>
-				<form ng-submit="myControl.addTodo()">
+				<form ng-submit="notes.addNote()">
 					<div class="form-group">
 						<label for="newUser">User:</label>
 						<select ng-model="noteadd.user" class="form-control" id="newUser" name="newUser">
@@ -111,7 +111,7 @@
 						<button type="submit" class="btn btn-info">Add</button>
 					</div>
 				</form>
-			</div>-->
+			</div>
 		</div>
 	</body>
 </html>
