@@ -20,13 +20,13 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     }
 
     function addNote(note) {
-            NoteFactory.addNote(note).then(getNotes, function() {
+        NoteFactory.addNote(note).then(getNotes, function() {
             alert("Error adding note");
         });
     }
 
     function delNote(note) {
-            NoteFactory.delNote(note).then(getNotes, function() {
+        NoteFactory.delNote(note).then(getNotes, function() {
             alert("Error deleting note");
         });
     }
@@ -44,13 +44,23 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         } else {
             thisApp.noteupd = note;
 
+            if (note.completed == 1) {
+                thisApp.noteupd.completed = true;
+            } else {
+                thisApp.noteupd.completed = false;
+            }
+
             overlaycover.style.display = "block"; // Show div overlaycover
             overlaybox.style.display = "block"; // Show div overlaybox
         }
     }
 
     function updNote(note) {
-            NoteFactory.updNote(note).then(getNotes, function() {
+        NoteFactory.updNote(note).then(function() {
+            getNotes;
+            overlaycover.style.display = "none"; // Hide div overlaycover
+            overlaybox.style.display = "none"; // Hide div overlaybox
+        }, function() {
             alert("Error updating note");
         });
     }

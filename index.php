@@ -27,15 +27,13 @@
 
 		<script src="/js/bootstrap.min.js"></script>
 	</head>
-	<body>
-		<div id="overlaycover" ng-click="myControl.showUpd(0)"></div>
+	<body ng-controller="NoteController as notes">
+		<div id="overlaycover" ng-click="notes.showUpd(0)"></div>
 
 		<div id="overlaybox">
-			<div class="col-md-12" ng-controller="NoteController as notes">
+			<div class="col-md-12">
 				<h4>Update:</h4>
 				<form ng-submit="notes.updNote(notes.noteupd)">
-					<!-- just to debug, remove the next line afterwards -->
-					{{notes.noteupd}} 
 					<div class="form-group">
 						<label for="updContent">Note:</label>
 						<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="notes.noteupd.content"></textarea>
@@ -58,7 +56,7 @@
 			</div>
 		</div>
 
-		<div class="container" ng-controller="NoteController as notes">
+		<div class="container">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="listDiv">
 				<h1>Todo-list:</h1>
 				<p>
