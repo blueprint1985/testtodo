@@ -86,7 +86,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formDiv">
 				<h3>Add new note:</h3>
-				<form ng-submit="notes.addNote()">
+				<form ng-submit="notes.addNote(noteadd)">
 					<div class="form-group">
 						<label for="newUser">User:</label>
 						<select ng-model="noteadd.user" class="form-control" id="newUser" name="newUser">
