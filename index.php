@@ -18,46 +18,46 @@
 		<!--<script src="/js/Controllers/MainController.js"></script>-->
 
 		<script src="/js/AppModule.js"></script>
-		<script src="/js/Services/NoteService.js"></script>
+		<script src="/js/Factories/NoteFactory.js"></script>
 		<script src="/js/Controllers/NoteController.js"></script>
-		<script src="/js/Services/UserService.js"></script>
+		<script src="/js/Factories/UserFactory.js"></script>
 		<script src="/js/Controllers/UserController.js"></script>
-		<script src="/js/Services/ProjectService.js"></script>
+		<script src="/js/Factories/ProjectFactory.js"></script>
 		<script src="/js/Controllers/ProjectController.js"></script>
 
 		<script src="/js/bootstrap.min.js"></script>
 	</head>
-	<body ng-controller="MainController as myControl">
-		<div id="overlaycover" ng-click="myControl.showUpd(0)"></div>
+	<body>
+		<!--<div id="overlaycover" ng-click="myControl.showUpd(0)"></div>
 
 		<div id="overlaybox">
-			<div class="col-md-12">
-			<h4>Update:</h4>
-			<form ng-submit="myControl.updTodo()">
-				<div class="form-group">
-					<label for="updContent">Note:</label>
-					<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="noteupd.content"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="updDeadline">Deadline (format YYYY-MM-DD HH:MM:SS):</label>
-					<input type="text" class="form-control" id="updDeadline" name="updDeadline" ng-model="noteupd.deadline" />
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" id="updCompleted" name="updCompleted" ng-model="noteupd.completed" /> - Completed
-					</label>
-				</div>
-				<div class="form-group">
-					<input type="hidden" id="updID" ng-model="noteupd.id" /><br/>
-					<button type="submit" class="btn btn-info">Update</button>
-				</div>
-			</form>
-			Click utside the square to close.
+			<div class="col-md-12" ng-controller="NoteController as notes">
+				<h4>Update:</h4>
+				<form ng-submit="notes.updNote()">
+					<div class="form-group">
+						<label for="updContent">Note:</label>
+						<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="noteupd.content"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="updDeadline">Deadline (format YYYY-MM-DD HH:MM:SS):</label>
+						<input type="text" class="form-control" id="updDeadline" name="updDeadline" ng-model="noteupd.deadline" />
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" id="updCompleted" name="updCompleted" ng-model="noteupd.completed" /> - Completed
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="hidden" id="updID" ng-model="noteupd.id" /><br/>
+						<button type="submit" class="btn btn-info">Update</button>
+					</div>
+				</form>
+				Click utside the square to close.
 			</div>
-		</div>
+		</div>-->
 
 		<div class="container">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="listDiv">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="listDiv" ng-controller="NoteController as notes">
 				<h1>Todo-list:</h1>
 				<p>
 					<img src="/images/legend-normal.png"> - Unfinished&emsp;
@@ -73,18 +73,18 @@
 						<th>Deadline:</th>
 						<th colspan="2">Modify:</th>
 					</tr>
-					<tr ng-repeat="todo in myControl.todos" ng-class="rowClass(todo.completed, todo.deadline)">
-						<td> {{ todo.content }} </td>
-						<td> {{ todo.user }} </td>
-						<td> {{ todo.project }} </td>
-						<td> {{ todo.created }} </td>
-						<td> {{ todo.deadline }} </td>
-						<td><button type="button" class="btn btn-info" ng-click="myControl.showUpd(todo.id)">Update</button></td>
-						<td><button type="button" class="btn btn-danger" ng-click="myControl.delTodo(todo.id)">Delete</button></td>
+					<tr ng-repeat="note in notes.getNotes()" ng-class="rowClass(note.completed, note.deadline)">
+						<td> {{ note.content }} </td>
+						<td> {{ note.user }} </td>
+						<td> {{ note.project }} </td>
+						<td> {{ note.created }} </td>
+						<td> {{ note.deadline }} </td>
+						<td><button type="button" class="btn btn-info" ng-click="myControl.showUpd(note.id)">Update</button></td>
+						<td><button type="button" class="btn btn-danger" ng-click="myControl.delTodo(note.id)">Delete</button></td>
 					</tr>
 				</table>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formDiv">
+			<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formDiv">
 				<h3>Add new note:</h3>
 				<form ng-submit="myControl.addTodo()">
 					<div class="form-group">
@@ -111,7 +111,7 @@
 						<button type="submit" class="btn btn-info">Add</button>
 					</div>
 				</form>
-			</div>
+			</div>-->
 		</div>
 	</body>
 </html>
