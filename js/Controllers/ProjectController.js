@@ -1,7 +1,17 @@
 angular.module('todoApp').controller('ProjectController', function($scope, ProjectFactory) {
-    var getProjects = ProjectFactory.getProjects().then(function(data){
-        thisApp.projects = response.data;
-    }, function() {
-        alert("Error getting projects");
-    });
+    var thisApp = this;
+    
+    // controller init sort of say
+    function activate() {
+        getProjects();
+    }
+    activate();
+    
+    function getProjects() {
+        ProjectFactory.getProjects().then(function(response){ 
+            thisApp.projects = response.data; 
+        }, function() { 
+            alert("Error getting projects"); 
+        });
+    }
 });

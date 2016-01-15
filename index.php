@@ -79,8 +79,8 @@
 						<td> {{ note.project }} </td>
 						<td> {{ note.created }} </td>
 						<td> {{ note.deadline }} </td>
-						<td><button type="button" class="btn btn-info" ng-click="myControl.showUpd(note.id)">Update</button></td>
-						<td><button type="button" class="btn btn-danger" ng-click="myControl.delNote(note.id)">Delete</button></td>
+						<td><button type="button" class="btn btn-info" ng-click="notes.showUpd(note.id)">Update</button></td>
+						<td><button type="button" class="btn btn-danger" ng-click="notes.delNote(note.id)">Delete</button></td>
 					</tr>
 				</table>
 			</div>
