@@ -7,7 +7,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     
     // controller init sort of say
     function activate() {
-        getNotes;
+        getNotes();
     }
     activate();
 
