@@ -1,20 +1,28 @@
 angular.module('todoApp').controller('NoteController', function($scope, NoteFactory) {
+    var thisApp = this;
+     // exposed functions in the view
+    thisApp.addNote = addNote;
+    thisApp.delNote = delNote;
+    thisApp.updNote = updNote;
+    
+    // controller init sort of say
+    function activate() {
+        getNotes;
+    }
+    activate();
+
     var getNotes = NoteFactory.getNotes().then(function(data){
         thisApp.notes = response.data;
     }, function() {
         alert("Error getting notes");
     });
 
-    /*var addNote = NoteFactory.addNote($scope.noteadd).then(function(data){
-        thisApp.users = response.data;
-    }, function() {
-        alert("Error getting users");
+    var addNote = NoteFactory.addNote($scope.noteadd).then(getNotes, function() {
+        alert("Error adding note");
     });
 
-    var delNote = NoteFactory.delNote(noteDel).then(function(data){
-        thisApp.users = response.data;
-    }, function() {
-        alert("Error getting users");
+    var delNote = NoteFactory.delNote(noteDel).then(getNotes, function() {
+        alert("Error deleting note");
     });
 
     // Show overlay with form for updating a note
@@ -49,10 +57,8 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         }
     }
 
-    var updNote = NoteFactory.updNote($scope.noteupd).then(function(data){
-        thisApp.users = response.data;
-    }, function() {
-        alert("Error getting users");
+    var updNote = NoteFactory.updNote($scope.noteupd).then(getNotes, function() {
+        alert("Error updating note");
     });
 
     // Check if deadline passed for each note in list
@@ -69,5 +75,5 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         } else {
             return "active"; // Note is not completed, still time left
         }
-    }*/
+    }
 });
