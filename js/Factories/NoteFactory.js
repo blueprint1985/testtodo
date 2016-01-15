@@ -5,7 +5,7 @@ function factory($http) {
         getNotes: getNotes,
         addNote: addNote,
         delNote: delNote,
-        delNote: delNote,
+        updNote: updNote,
         showNote: showNote
     };
 
@@ -21,7 +21,7 @@ function factory($http) {
     }
 
     function addNote(noteAdd) {
-        $http({
+        return $http({
             method : 'PUT', 
             url : 'http://localhost:8000/notes',
             data : $.param(noteAdd),
@@ -43,7 +43,7 @@ function factory($http) {
     }
 
     function updNote(noteUpd) {
-        $http({
+        return $http({
             method : 'POST', 
             url : 'http://localhost:8000/notes',
             data : $.param(noteUpd),
