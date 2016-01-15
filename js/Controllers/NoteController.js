@@ -19,13 +19,17 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         });
     }
 
-    var addNote = NoteFactory.addNote($scope.noteadd).then(getNotes, function() {
-        alert("Error adding note");
-    });
+    function addNote(note) {
+            NoteFactory.addNote(note).then(getNotes, function() {
+            alert("Error adding note");
+        });
+    }
 
-    var delNote = NoteFactory.delNote(noteDel).then(getNotes, function() {
-        alert("Error deleting note");
-    });
+    function delNote(note) {
+            NoteFactory.delNote(note).then(getNotes, function() {
+            alert("Error deleting note");
+        });
+    }
 
     // Show overlay with form for updating a note
     thisApp.showUpd = function(noteID)
@@ -59,9 +63,11 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
         }
     }
 
-    var updNote = NoteFactory.updNote($scope.noteupd).then(getNotes, function() {
-        alert("Error updating note");
-    });
+    function updNote(note) {
+            NoteFactory.updNote(note).then(getNotes, function() {
+            alert("Error updating note");
+        });
+    }
 
     // Check if deadline passed for each note in list
     $scope.rowClass = function(completed, deadline)
