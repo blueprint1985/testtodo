@@ -33,22 +33,22 @@
 		<div id="overlaybox">
 			<div class="col-md-12" ng-controller="NoteController as notes">
 				<h4>Update:</h4>
-				<form ng-submit="notes.updNote()">
+				<form ng-submit="notes.updNote(notes.noteupd)">
 					<div class="form-group">
 						<label for="updContent">Note:</label>
-						<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="noteupd.content"></textarea>
+						<textarea rows="5" cols="30" class="form-control" id="updContent" name="updContent" ng-model="notes.noteupd.content"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="updDeadline">Deadline (format YYYY-MM-DD HH:MM:SS):</label>
-						<input type="text" class="form-control" id="updDeadline" name="updDeadline" ng-model="noteupd.deadline" />
+						<input type="text" class="form-control" id="updDeadline" name="updDeadline" ng-model="notes.noteupd.deadline" />
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" id="updCompleted" name="updCompleted" ng-model="noteupd.completed" /> - Completed
+							<input type="checkbox" id="updCompleted" name="updCompleted" ng-model="notes.noteupd.completed" /> - Completed
 						</label>
 					</div>
 					<div class="form-group">
-						<input type="hidden" id="updID" ng-model="noteupd.id" /><br/>
+						<input type="hidden" id="updID" ng-model="notes.noteupd.id" /><br/>
 						<button type="submit" class="btn btn-info">Update</button>
 					</div>
 				</form>
@@ -80,7 +80,7 @@
 						<td> {{ note.created }} </td>
 						<td> {{ note.deadline }} </td>
 						<td><button type="button" class="btn btn-info" ng-click="notes.showUpd(note.id)">Update</button></td>
-						<td><button type="button" class="btn btn-danger" ng-click="notes.delNote(note.id)">Delete</button></td>
+						<td><button type="button" class="btn btn-danger" ng-click="notes.delNote(note)">Delete</button></td>
 					</tr>
 				</table>
 			</div>
