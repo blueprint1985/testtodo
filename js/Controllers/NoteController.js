@@ -32,7 +32,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
     }
 
     // Show overlay with form for updating a note
-    thisApp.showUpd = function(noteID)
+    thisApp.showUpd = function(note)
     {
         var overlaycover = document.getElementById("overlaycover");
         var overlaybox = document.getElementById("overlaybox");
@@ -42,7 +42,7 @@ angular.module('todoApp').controller('NoteController', function($scope, NoteFact
             overlaycover.style.display = "none"; // Hide div overlaycover
             overlaybox.style.display = "none"; // Hide div overlaybox
         } else {
-            var getUpd = NoteFactory.updNote(noteUpd).then(function(data){
+            var getUpd = NoteFactory.updNote(note).then(function(data){
                 thisApp.users = response.data;
             }, function() {
                 alert("Error getting users");
